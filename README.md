@@ -11,4 +11,4 @@ Projeto Petlov para o treinamento de automação de testes com Java e JUnit 5
 - JDK 21
 - JUnit 5
 
-## 🤖 Projeto de automação iniciado...Jaja mais código
+## 🤖 Projeto de automação iniciado... Jaja mais código
