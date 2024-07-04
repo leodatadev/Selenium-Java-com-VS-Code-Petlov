@@ -1,5 +1,3 @@
-![poster](.github/cover.png)
-
 ![Captura de tela 2024-07-04 170345](https://github.com/leodatadev/Selenium-Java-com-VS-Code-Petlov/assets/141060396/47542b6e-b88b-4679-adee-a0fe813306f6)
 
 
