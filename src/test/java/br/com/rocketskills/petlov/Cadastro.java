@@ -30,6 +30,19 @@ class PontoDoacao {
 
 class Cadastro {
 
+	private void submeterFormulario(PontoDoacao ponto) {
+		// Ação
+		$("input[placeholder='Nome do ponto de doação']").setValue(ponto.nome);
+		$("input[name=email]").setValue(ponto.email);
+		$("input[name=cep]").setValue(ponto.cep);
+		$("input[value='Buscar CEP']").click();
+		$("input[name=addressNumber]").setValue(ponto.numero.toString());
+		$("input[name=addressDetails]").setValue(ponto.complemento);
+		$(By.xpath("//span[text()=\"" + ponto.pets + "\"]/..")).click();
+		$(".button-register").click();
+
+	}
+
 	@Test
 	@DisplayName("Deve poder cadastrar um ponto de doação")
 	void cratePoint() {
@@ -47,15 +60,8 @@ class Cadastro {
 		open("https://petlov.vercel.app/signup");
 		$("h1").should(text("Cadastro de ponto de doação"));
 
-		// Ação
-		$("input[placeholder='Nome do ponto de doação']").setValue(ponto.nome);
-		$("input[name=email]").setValue(ponto.email);
-		$("input[name=cep]").setValue(ponto.cep);
-		$("input[value='Buscar CEP']").click();
-		$("input[name=addressNumber]").setValue(ponto.numero.toString());
-		$("input[name=addressDetails]").setValue(ponto.complemento);
-		$(By.xpath("//span[text()=\"" + ponto.pets + "\"]/..")).click();
-		$(".button-register").click();
+		//Ação
+		submeterFormulario(ponto);
 
 		// Resultado esperado
 		String target = "Seu ponto de doação foi adicionado com sucesso. Juntos, podemos criar um mundo onde todos os animais recebam o amor e cuidado que merecem.";
