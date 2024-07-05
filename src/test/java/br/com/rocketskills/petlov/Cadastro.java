@@ -20,7 +20,7 @@ class Cadastro {
 	@DisplayName("Deve poder cadastrar um ponto de doação")
 	void cratePoint() {
 		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
 		driver.get("https://petlov.vercel.app/signup");
 
@@ -28,7 +28,6 @@ class Cadastro {
 
 		Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
 		wait.until(d -> title.isDisplayed());
-
 
 		assertEquals("Cadastro de ponto de doação", title.getText(), "Verificando o título da página de cadastro");
 
@@ -48,7 +47,20 @@ class Cadastro {
 		number.sendKeys("1300");
 
 		WebElement details = driver.findElement(By.cssSelector("input[name=addressDetails]"));
-		details.sendKeys("Ao lado do centro comercial universe");
+		details.sendKeys("Ao lado do centro comercial");
+
+		driver.findElement(By.xpath("//span[text()=\"Cachorros\"]/..")).click();
+
+		driver.findElement(By.className("button-register")).click();
+
+		WebElement result = driver.findElement(By.cssSelector("#success-page p"));
+
+		Wait<WebDriver> waitResult = new WebDriverWait(driver, Duration.ofSeconds(2));
+		waitResult.until(d -> result.isDisplayed());
+
+		String target = "Seu ponto de doação foi adicionado com sucesso. Juntos, podemos criar um mundo onde todos os animais recebam o amor e cuidado que merecem.";
+
+		assertEquals(target, result.getText(), "Verificando a mensagem de sucesso.");
 
 		driver.close();
 	}
