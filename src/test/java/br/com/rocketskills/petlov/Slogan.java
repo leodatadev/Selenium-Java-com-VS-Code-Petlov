@@ -18,7 +18,7 @@ class Slogan {
 
 	@Test
 	@DisplayName("Deve exibir o slogan do site")
-	void addsTwoNumbers() {
+	void sloganTest() {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 
