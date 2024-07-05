@@ -43,9 +43,15 @@ class Cadastro {
 
 	}
 
+	private void acessarFormulario(){
+		open("https://petlov.vercel.app/signup");
+		$("h1").should(text("Cadastro de ponto de doação"));
+
+	}
+
 	@Test
 	@DisplayName("Deve poder cadastrar um ponto de doação")
-	void cratePoint() {
+	void caminhoFeliz() {
 
 		// Pré-condição
 		PontoDoacao	 ponto = new PontoDoacao(
@@ -57,8 +63,7 @@ class Cadastro {
 			"Cachorros"
 		); 	
 
-		open("https://petlov.vercel.app/signup");
-		$("h1").should(text("Cadastro de ponto de doação"));
+		acessarFormulario();
 
 		//Ação
 		submeterFormulario(ponto);
@@ -66,6 +71,31 @@ class Cadastro {
 		// Resultado esperado
 		String target = "Seu ponto de doação foi adicionado com sucesso. Juntos, podemos criar um mundo onde todos os animais recebam o amor e cuidado que merecem.";
 		$("#success-page p").should(text(target));
+		
+	}
+
+	@Test
+	@DisplayName("Não deve cadastrar com email inválido")
+	void emailIncorreto() {
+
+		// Pré-condição
+		PontoDoacao	 ponto = new PontoDoacao(
+			"Lar dos Bichanos",
+			"atendimento&lardosbichanos.com.br",
+			"22775040",
+			1300,
+			"Ao lado do centro comercial",
+			"Gatos"
+		); 	
+
+		acessarFormulario();
+
+		//Ação
+		submeterFormulario(ponto);
+
+		// Resultado esperado
+		String target = "Informe um email válido";
+		$(".alert-error").should(text(target));
 		
 	}
 }
