@@ -12,7 +12,8 @@ Projeto Petlov para o treinamento de automação de testes com Java e JUnit 5
 
 ## 🤖 Projeto de automação iniciado...
 
-- Usei também o Framework Selenide você pode saber um pouco mais sobre o framework acessando --> (https://selenide.org/quick-start.html).
+- Usei também o Framework Selenide você pode saber um pouco mais sobre o framework acessando:\
+  --> (https://selenide.org/quick-start.html).
 
 ## 🤖 Projeto de automação concluido.
 
